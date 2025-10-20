@@ -1,0 +1,17 @@
+[
+  {
+    "email": "admin@taskflow.com",
+    "password": "123456",
+    "role": "admin"
+  },
+  {
+    "email": "manager@taskflow.com",
+    "password": "123456",
+    "role": "manager"
+  },
+  {
+    "email": "member@taskflow.com",
+    "password": "123456",
+    "role": "member"
+  }
+]

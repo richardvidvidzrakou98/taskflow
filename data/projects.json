@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Website Revamp",
+    "description": "Marketing site refresh",
+    "owner": "manager@taskflow.com"
+  },
+  {
+    "id": 2,
+    "name": "Mobile App",
+    "description": "v1 onboarding flow",
+    "owner": "manager@taskflow.com"
+  },
+  {
+    "name": "Spam Detection App",
+    "description": "Detects spam messages",
+    "owner": "admin@taskflow.com",
+    "id": 3
+  },
+  {
+    "name": "AWS Migration",
+    "description": "Migrate On-prem Three-tier application to decoupled AWS environment",
+    "owner": "admin@taskflow.com",
+    "id": 4
+  }
+]

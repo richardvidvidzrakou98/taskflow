@@ -1,26 +1,210 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-purple: #4c4857;
+  --secondary-purple: #352d6d;
+  --light-purple: #C4B5FD;
+  --dark-purple: #7C3AED;
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --text-light: #9CA3AF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+/* Custom gradient background to match the image */
+.app-background {
+  background: linear-gradient(135deg, #9d90b9 0%, #9d90b9 100%);
+  min-height: 100vh;
+}
+
+/* Card Components - Increased padding and sizes */
+.app-card {
+  @apply bg-white rounded-2xl backdrop-blur-sm border border-white/20;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+}
+
+/* Project card styling from the image - Increased padding */
+.project-card {
+  background: linear-gradient(135deg, #4d4168 0%, #4e4463 100%);
+  border-radius: 16px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 2px 12px rgba(49, 25, 106, 0.2);
+  padding: 20px;
+}
+.project-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+}
+.project-card p {
+  font-size: 16px;
+  color: #b6bac6;
+  margin-bottom: 16px;
+}
+
+
+/* Task item styling - Increased padding and font */
+.task-card {
+  background: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+/* Button styling */
+.btn-primary {
+  background: linear-gradient(135deg, #2a233b 0%, #2a233b 100%);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 33, 59, 0.3);
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.btn-primary:focus {
+  outline: none;
+  ring: 2px solid #7C3AED;
+  ring-offset: 2px;
+}
+
+/* Focus styles for better accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid #7C3AED;
+  outline-offset: 2px;
+}
+
+/* Ensure sufficient color contrast */
+.text-muted {
+  color: #6B7280; /* WCAG AA compliant */
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .app-card {
+    border: 2px solid #000;
+  }
+  
+  .btn-primary {
+    border: 2px solid #000;
+  }
+}
+
+/* Status badges */
+.status-badge {
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-pending {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.status-done {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.status-progress {
+  background: #DBEAFE;
+  color: #1E40AF;
+}
+
+/* Loading dots animation */
+.loading-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.loading-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  animation: loading-dots 1.4s infinite both;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes loading-dots {
+  0%, 80%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Typography - Increased sizes for more natural feel */
+.heading-primary {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.heading-secondary {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-body {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+.text-caption {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-light);
   font-family: Arial, Helvetica, sans-serif;
 }

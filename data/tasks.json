@@ -1,0 +1,58 @@
+[
+  {
+    "id": 2,
+    "projectId": 1,
+    "title": "Build hero section",
+    "assignedTo": "member@taskflow.com",
+    "status": "done"
+  },
+  {
+    "id": 3,
+    "projectId": 2,
+    "title": "Create login screen",
+    "assignedTo": "manager@taskflow.com",
+    "status": "done"
+  },
+  {
+    "title": "Onboarding Screen Completion",
+    "assignedTo": "manager@taskflow.com",
+    "projectId": 1,
+    "status": "pending",
+    "id": 4
+  },
+  {
+    "title": "API Integration",
+    "assignedTo": "admin@taskflow.com",
+    "projectId": 1,
+    "status": "done",
+    "id": 5
+  },
+  {
+    "title": "Login Screen",
+    "assignedTo": "manager@taskflow.com",
+    "projectId": 1,
+    "status": "done",
+    "id": 7
+  },
+  {
+    "title": "Update UI",
+    "assignedTo": "manager@taskflow.com",
+    "projectId": 2,
+    "status": "pending",
+    "id": 8
+  },
+  {
+    "title": "Deploy changes on auth page",
+    "assignedTo": "member@taskflow.com",
+    "projectId": 1,
+    "status": "done",
+    "id": 9
+  },
+  {
+    "title": "Project Meeting",
+    "assignedTo": "manager@taskflow.com",
+    "projectId": 3,
+    "status": "done",
+    "id": 10
+  }
+]

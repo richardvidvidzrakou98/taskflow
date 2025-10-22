@@ -49,16 +49,7 @@ export default function LoginPage() {
     }
   };
 
-  const demoUsers = [
-    { email: 'admin@taskflow.com', role: 'Admin', color: 'bg-purple-500' },
-    { email: 'manager@taskflow.com', role: 'Manager', color: 'bg-blue-500' },
-    { email: 'member@taskflow.com', role: 'Member', color: 'bg-green-500' },
-  ];
 
-  const fillCredentials = (email: string, password: string) => {
-    setEmail(email);
-    setPassword(password);
-  };
 
   if (!isHydrated) {
     return <Loading text="Loading..." />;
@@ -144,43 +135,6 @@ export default function LoginPage() {
               )}
             </button>
           </form>
-        </div>
-
-        {/* Demo Credentials Card */}
-        <div className="app-card">
-          <h3 className="heading-secondary text-gray-800 mb-4 text-center">
-             Demo Accounts
-          </h3>
-          <div className="space-y-4">
-            {demoUsers.map((user, index) => (
-              <div
-                key={user.email}
-                className="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-200"
-              >
-                <div className="flex items-center space-x-4">
-                  <div className={`w-10 h-10 ${user.color} rounded-full flex items-center justify-center`}>
-                    <span className="text-white font-bold text-body">
-                      {user.role.charAt(0)}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="text-body font-medium text-gray-800">{user.role}</p>
-                    <p className="text-caption text-gray-600">{user.email}</p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => fillCredentials(user.email, '123456')}
-                  className="text-purple-600 hover:text-purple-700 text-body font-medium px-4 py-2 rounded-lg hover:bg-purple-50 transition-all duration-200"
-                  disabled={isLoading}
-                >
-                  Use
-                </button>
-              </div>
-            ))}
-          </div>
-          <p className="text-caption text-gray-500 text-center mt-4">
-            All demo accounts use password: <span className="font-mono bg-gray-200 px-2 py-1 rounded">123456</span>
-          </p>
         </div>
       </div>
     </div>

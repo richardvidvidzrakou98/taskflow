@@ -50,21 +50,21 @@ The application comes with pre-configured user accounts for testing:
 ### Admin Account
 
 - **Email:** `admin@taskflow.com`
-- **Password:** `admin123`
+- **Password:** `123456`
 - **Role:** Admin
 - **Permissions:** Full system access
 
 ### Manager Account
 
 - **Email:** `manager@taskflow.com`
-- **Password:** `manager123`
+- **Password:** `123456`
 - **Role:** Manager
 - **Permissions:** Can create/edit/delete tasks in owned projects
 
 ### Member Account
 
 - **Email:** `member@taskflow.com`
-- **Password:** `member123`
+- **Password:** `123456`
 - **Role:** Member
 - **Permissions:** Can view and mark own tasks as done
 

@@ -42,7 +42,7 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const authToken = request.cookies.get('auth-token')?.value;
@@ -55,7 +55,8 @@ export async function PATCH(
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
-    const taskId = parseInt(params.id);
+    const { id } = await params;
+    const taskId = parseInt(id);
     const task = getTaskById(taskId);
     
     if (!task) {
@@ -93,7 +94,7 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const authToken = request.cookies.get('auth-token')?.value;
@@ -106,7 +107,8 @@ export async function DELETE(
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
-    const taskId = parseInt(params.id);
+    const { id } = await params;
+    const taskId = parseInt(id);
     const task = getTaskById(taskId);
     
     if (!task) {

@@ -5,7 +5,7 @@ import { canEditTask, canMarkTaskDone } from '@/lib/rbac';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const authToken = request.cookies.get('auth-token')?.value;
@@ -18,7 +18,8 @@ export async function GET(
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
-    const taskId = parseInt(params.id);
+    const { id } = await params;
+    const taskId = parseInt(id);
     const task = getTaskById(taskId);
     
     if (!task) {

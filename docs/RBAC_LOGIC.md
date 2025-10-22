@@ -1,6 +1,6 @@
 # Role-Based Access Control (RBAC) Logic
 
-TaskFlow implements a comprehensive RBAC system that controls access to features and data based on user roles.
+I implements a comprehensive RBAC system that controls access to features and data based on user roles.
 
 ## User Roles
 
@@ -10,16 +10,16 @@ TaskFlow implements a comprehensive RBAC system that controls access to features
 
 **Permissions:**
 
-- ✅ View all projects in the system
-- ✅ Create new projects
-- ✅ Edit/delete any project
-- ✅ View all tasks in the system
-- ✅ Create tasks in any project
-- ✅ Edit/delete any task
-- ✅ Assign tasks to any user
-- ✅ Mark any task as done/pending
-- ✅ View all user accounts
-- ✅ Access admin dashboard with system-wide statistics
+- View all projects in the system
+- Create new projects
+- Edit/delete any project
+- View all tasks in the system
+- Create tasks in any project
+- Edit/delete any task
+- Assign tasks to any user
+- Mark any task as done/pending
+- View all user accounts
+- Access admin dashboard with system-wide statistics
 
 **Dashboard Statistics:**
 
@@ -34,17 +34,17 @@ TaskFlow implements a comprehensive RBAC system that controls access to features
 
 **Permissions:**
 
-- ✅ View all projects (but can only edit owned projects)
-- ✅ Create new projects (becomes owner)
-- ✅ Edit/delete projects they own
-- ✅ View tasks in their projects
-- ✅ Create tasks in their projects
-- ✅ Edit/delete tasks in their projects
-- ✅ Assign tasks in their projects
-- ✅ Mark tasks as done/pending in their projects
-- ✅ View team members for task assignment
-- ❌ Cannot access other managers' projects
-- ❌ Cannot view system-wide admin statistics
+- View all projects (but can only edit owned projects)
+- Create new projects (becomes owner)
+- Edit/delete projects they own
+- View tasks in their projects
+- Create tasks in their projects
+- Edit/delete tasks in their projects
+- Assign tasks in their projects
+- Mark tasks as done/pending in their projects
+- View team members for task assignment
+- Cannot access other managers' projects
+- Cannot view system-wide admin statistics
 
 **Dashboard Statistics:**
 
@@ -59,15 +59,15 @@ TaskFlow implements a comprehensive RBAC system that controls access to features
 
 **Permissions:**
 
-- ✅ View projects where they have assigned tasks
-- ✅ View tasks assigned to them
-- ✅ Mark their own tasks as done/pending
-- ❌ Cannot create projects
-- ❌ Cannot create tasks
-- ❌ Cannot edit/delete tasks
-- ❌ Cannot assign tasks to others
-- ❌ Cannot view tasks not assigned to them
-- ❌ Cannot view projects without their tasks
+- View projects where they have assigned tasks
+- View tasks assigned to them
+- Mark their own tasks as done/pending
+- Cannot create projects
+- Cannot create tasks
+- Cannot edit/delete tasks
+- Cannot assign tasks to others
+- Cannot view tasks not assigned to them
+- Cannot view projects without their tasks
 
 **Dashboard Statistics:**
 
@@ -149,26 +149,6 @@ export function canDeleteTask(
   return false;
 }
 ```
-
-## Permission Matrix
-
-| Action                     | Admin | Manager | Member |
-| -------------------------- | ----- | ------- | ------ |
-| View all projects          | ✅    | ✅      | ❌     |
-| View own/relevant projects | ✅    | ✅      | ✅     |
-| Create projects            | ✅    | ✅      | ❌     |
-| Edit owned projects        | ✅    | ✅      | ❌     |
-| Delete owned projects      | ✅    | ✅      | ❌     |
-| View all tasks             | ✅    | ❌      | ❌     |
-| View project tasks         | ✅    | ✅\*    | ❌     |
-| View assigned tasks        | ✅    | ✅      | ✅     |
-| Create tasks               | ✅    | ✅\*    | ❌     |
-| Edit tasks                 | ✅    | ✅\*    | ❌     |
-| Delete tasks               | ✅    | ✅\*    | ❌     |
-| Mark tasks done/pending    | ✅    | ✅\*    | ✅\*\* |
-
-\*Only in projects they own
-\*\*Only their own assigned tasks
 
 ## Security Features
 

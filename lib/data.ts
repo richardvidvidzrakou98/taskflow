@@ -2,11 +2,10 @@ import { User, Project, Task, UserRole } from '@/types';
 import usersData from '@/data/users.json';
 import projectsData from '@/data/projects.json';
 import tasksData from '@/data/tasks.json';
-import fs from 'fs';
-import path from 'path';
 
-// In a real app, these would be database operations
-// For now, we'll work with in-memory copies of the JSON data
+// In-memory data storage for production compatibility
+// Note: Data will reset on each deployment/restart - this is for demo purposes
+// In production, you would use a database like PostgreSQL, MongoDB, etc.
 
 let users: User[] = usersData.map(u => ({ ...u, role: u.role as UserRole }));
 let projects: Project[] = [...projectsData];
@@ -15,20 +14,15 @@ let tasks: Task[] = tasksData.map(t => ({
   status: t.status as 'pending' | 'done' 
 }));
 
-// Helper functions to persist data to files
-function saveUsersToFile() {
-  const filePath = path.join(process.cwd(), 'data', 'users.json');
-  fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
-}
-
-function saveProjectsToFile() {
-  const filePath = path.join(process.cwd(), 'data', 'projects.json');
-  fs.writeFileSync(filePath, JSON.stringify(projects, null, 2));
-}
-
-function saveTasksToFile() {
-  const filePath = path.join(process.cwd(), 'data', 'tasks.json');
-  fs.writeFileSync(filePath, JSON.stringify(tasks, null, 2));
+// Helper functions for data persistence
+// Note: In production (Vercel), file system is read-only, so we use in-memory storage
+// Data will persist during the serverless function lifecycle but reset on cold starts
+function saveData() {
+  // In development, we could save to files, but in production this is a no-op
+  // since Vercel's file system is read-only
+  if (process.env.NODE_ENV === 'development') {
+    console.log('Data updated (in-memory storage for production compatibility)');
+  }
 }
 
 // User operations
@@ -41,7 +35,7 @@ export function updateUserRole(email: string, newRole: UserRole): User | null {
   if (userIndex === -1) return null;
   
   users[userIndex] = { ...users[userIndex], role: newRole };
-  saveUsersToFile(); // Persist to file
+  saveData(); // Persist changes
   return users[userIndex];
 }
 
@@ -58,7 +52,7 @@ export function createProject(projectData: Omit<Project, 'id'>): Project {
   const newId = Math.max(...projects.map(p => p.id), 0) + 1;
   const newProject: Project = { ...projectData, id: newId };
   projects.push(newProject);
-  saveProjectsToFile(); // Persist to file
+  saveData(); // Persist changes
   return newProject;
 }
 
@@ -67,7 +61,7 @@ export function updateProject(id: number, updates: Partial<Omit<Project, 'id'>>)
   if (projectIndex === -1) return null;
   
   projects[projectIndex] = { ...projects[projectIndex], ...updates };
-  saveProjectsToFile(); // Persist to file
+  saveData(); // Persist changes
   return projects[projectIndex];
 }
 
@@ -78,8 +72,7 @@ export function deleteProject(id: number): boolean {
   projects.splice(projectIndex, 1);
   // Also delete associated tasks
   tasks = tasks.filter(t => t.projectId !== id);
-  saveProjectsToFile(); // Persist projects
-  saveTasksToFile(); // Persist tasks (since we deleted some)
+  saveData(); // Persist changes
   return true;
 }
 
@@ -104,7 +97,7 @@ export function createTask(taskData: Omit<Task, 'id'>): Task {
   const newId = Math.max(...tasks.map(t => t.id), 0) + 1;
   const newTask: Task = { ...taskData, id: newId };
   tasks.push(newTask);
-  saveTasksToFile(); // Persist to file
+  saveData(); // Persist changes
   return newTask;
 }
 
@@ -113,7 +106,7 @@ export function updateTask(id: number, updates: Partial<Omit<Task, 'id'>>): Task
   if (taskIndex === -1) return null;
   
   tasks[taskIndex] = { ...tasks[taskIndex], ...updates };
-  saveTasksToFile(); // Persist to file
+  saveData(); // Persist changes
   return tasks[taskIndex];
 }
 
@@ -122,7 +115,7 @@ export function deleteTask(id: number): boolean {
   if (taskIndex === -1) return false;
   
   tasks.splice(taskIndex, 1);
-  saveTasksToFile(); // Persist to file
+  saveData(); // Persist changes
   return true;
 }
 

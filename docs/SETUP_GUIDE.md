@@ -29,7 +29,9 @@ yarn install
 
 ### 3. Environment Setup
 
-The application uses file-based data storage, so no database setup is required. All data is stored in JSON files in the `data/` directory.
+The application uses in-memory data storage for production compatibility. No database setup is required for development. Demo data is loaded from JSON files in the `data/` directory but stored in memory during runtime.
+
+> **Production Note**: Data will reset when the server restarts. For persistent storage, integrate with a database like PostgreSQL, MongoDB, or Supabase.
 
 ### 4. Start Development Server
 

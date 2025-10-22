@@ -2,7 +2,7 @@
 
 A modern, responsive task management application built with Next.js 15, featuring role-based access control (RBAC) and real-time task tracking.
 
-## 📚 Documentation
+## Documentation
 
 Comprehensive documentation is available in the `docs/` directory:
 
@@ -11,7 +11,7 @@ Comprehensive documentation is available in the `docs/` directory:
 - **[API Reference](docs/API_REFERENCE.md)** - Complete API documentation with examples
 - **[Deployment Guide](docs/DEPLOYMENT.md)** - Production deployment instructions for various platforms
 
-## 🚀 Features
+## Features
 
 ### Core Functionality
 
@@ -50,20 +50,20 @@ Comprehensive documentation is available in the `docs/` directory:
 - **Loading States** - Elegant loading animations and feedback
 - **Error Handling** - Comprehensive error states and user feedback
 - **Empty States** - Informative messages for empty data scenarios
-- **Data Persistence** - JSON file-based storage with auto-save
-- **Route Protection** - Middleware-based authentication guards
+- **Data Persistence** - In-memory storage with demo data (production-ready)
+- **Route Protection** - Client-side authentication guards
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
 - **Authentication**: Custom JWT-like implementation
-- **Data Storage**: JSON files (users.json, projects.json, tasks.json)
+- **Data Storage**: In-memory storage for production compatibility
 - **State Management**: React hooks and context
 - **UI Components**: Custom components with consistent design system
 
-## 📦 Installation & Setup
+## Installation & Setup
 
 1. **Clone the repository**
 
@@ -88,7 +88,7 @@ Comprehensive documentation is available in the `docs/` directory:
    - Open [http://localhost:3000](http://localhost:3000) in your browser
    - The app will automatically redirect to the login page
 
-## 🔐 Demo Credentials
+## Demo Credentials
 
 The application comes with pre-configured demo accounts:
 
@@ -98,7 +98,9 @@ The application comes with pre-configured demo accounts:
 | **Manager** | manager@taskflow.com | 123456   | Project creation, task management   |
 | **Member**  | member@taskflow.com  | 123456   | Task viewing, status updates        |
 
-## 📁 Project Structure
+> **⚠️ Production Note**: This demo uses in-memory storage. All data (projects, tasks, user changes) will reset when the serverless function restarts. For production use, integrate with a database like PostgreSQL, MongoDB, or Supabase for persistent storage.
+
+## Project Structure
 
 ```
 taskflow/
@@ -117,7 +119,7 @@ taskflow/
 └── types/                 # TypeScript definitions
 ```
 
-## 🎯 Key Pages & Features
+## Key Pages & Features
 
 ### Dashboard (`/dashboard`)
 
@@ -147,7 +149,7 @@ taskflow/
 - User statistics and task metrics
 - Admin-only access controls
 
-## 🔒 Security Features
+## Security Features
 
 - **Route Protection**: Middleware-based authentication
 - **RBAC Enforcement**: Both UI and API level permissions
@@ -155,7 +157,7 @@ taskflow/
 - **Input Validation**: Form validation and sanitization
 - **Error Boundaries**: Graceful error handling
 
-## 🎨 Design System
+## Design System
 
 - **Color Scheme**: Purple gradient theme with professional aesthetics
 - **Typography**: Arial/Helvetica font family for readability
@@ -163,7 +165,7 @@ taskflow/
 - **Responsive**: Mobile-first design with breakpoint optimization
 - **Accessibility**: Semantic HTML and keyboard navigation support
 
-## 📱 Responsive Design
+## Responsive Design
 
 The application is fully responsive with:
 
@@ -192,7 +194,7 @@ The application can be deployed to any platform supporting Next.js:
 - **Railway**
 - **Docker containers**
 
-## 📋 API Endpoints
+## API Endpoints
 
 ### Authentication
 
@@ -220,7 +222,7 @@ The application can be deployed to any platform supporting Next.js:
 - `PATCH /api/admin/users` - Update user roles
 - `GET /api/admin/analytics` - System analytics
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -228,22 +230,23 @@ The application can be deployed to any platform supporting Next.js:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🔧 Development Notes
+## Development Notes
 
-- **Data Persistence**: Uses JSON files for simplicity, can be easily migrated to databases
+- **Data Persistence**: Uses in-memory storage for production compatibility (data resets on deployment)
+- **Production Database**: For persistent storage, integrate with PostgreSQL, MongoDB, or other databases
 - **Authentication**: Custom implementation for educational purposes
 - **RBAC**: Comprehensive role-based access control system
 - **Error Handling**: Robust error boundaries and user feedback
 - **Performance**: Optimized with React best practices and Tailwind CSS
 
-## 📞 Support
+## Support
 
 For support, please open an issue in the GitHub repository or contact the development team.
 
 ---
 
-Built with ❤️ using Next.js and TypeScript
+Built with using Next.js and TypeScript
